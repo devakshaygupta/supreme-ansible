@@ -25,6 +25,6 @@
         }
     },
     "forwardPorts": [],
-    "postCreateCommand": "ansible-navigator --version",
+    "postCreateCommand": "",
     "remoteUser": "vscode"
 }
