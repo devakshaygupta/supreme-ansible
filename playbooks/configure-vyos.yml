@@ -1,0 +1,41 @@
+---
+- name: VyOS Device Configuration and Backup
+  hosts:
+    - vyos
+  gather_facts: true
+  tasks:
+    - name: Backup VyOS device configuration to local backup directory
+      vyos.vyos.vyos_config:
+        backup: true
+        backup_options:
+          filename: "{{ inventory_hostname }}.cfg"
+          dir_path: "{{ playbook_dir}}/backup"
+
+    - name: Set post-login banner on VyOS device
+      vyos.vyos.vyos_banner:
+        banner: post-login
+        text: "Welcome to {{ inventory_hostname }} {{ ansible_facts['net_model'] }}"
+        state: present
+
+    - name: Merge eth0 interface configuration on VyOS device
+      vyos.vyos.vyos_interfaces:
+        config:
+          - name: eth0
+            description: Configured by Ansible
+        state: merged
+
+    - name: Replace SNMP server configuration on VyOS device
+      vyos.vyos.vyos_snmp_server:
+        config:
+          communities:
+            - name: "Pattaya"
+              authorization_type: "ro"
+          location: "Thailand"
+          snmp_v3:
+            groups:
+              - group: "default"
+                view: "default"
+            views:
+              - view: "default"
+                oid: 1
+        state: replaced

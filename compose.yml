@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  vyos1:
+    image: docker.io/akshaygupta25/vyos-2025.07.24
+    container_name: vyos1
+    privileged: true
+    volumes:
+      - vyos-volume:/lib/modules:z
+    command: /sbin/init
+
+  vyos2:
+    image: docker.io/akshaygupta25/vyos-2025.07.24
+    container_name: vyos2
+    privileged: true
+    volumes:
+      - vyos-volume:/lib/modules:z
+    command: /sbin/init
+
+  vyos3:
+    image: docker.io/akshaygupta25/vyos-2025.07.24
+    container_name: vyos3
+    privileged: true
+    volumes:
+      - vyos-volume:/lib/modules:z
+    command: /sbin/init
+
+networks:
+  vyos-network: {}
+
+volumes:
+  vyos-volume: {}

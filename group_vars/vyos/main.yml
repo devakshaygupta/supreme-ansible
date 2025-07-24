@@ -1,0 +1,4 @@
+---
+ansible_network_os: vyos.vyos.vyos
+ansible_connection: ansible.netcommon.network_cli
+ansible_user: "{{ lookup('ansible.builtin.env', 'VYOS_USER') }}"
