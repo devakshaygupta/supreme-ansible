@@ -1,7 +1,7 @@
 {
     "name": "Ubuntu with Ansible Navigator and Podman",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "../Dockerfile"
     },
     "customizations": {
         // Configure properties specific to VS Code.
