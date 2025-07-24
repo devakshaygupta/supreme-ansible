@@ -47,8 +47,7 @@ WORKDIR /workspace/supreme-ansible
 
 # Create virtual environment and install requirements
 RUN python3 -m venv /workspace/supreme-ansible/.venv && \
-    /workspace/supreme-ansible/.venv/bin/pip install --upgrade pip && \
-    /workspace/supreme-ansible/.venv/bin/pip install -r /workspace/supreme-ansible/requirements.txt
+    /workspace/supreme-ansible/.venv/bin/pip install --upgrade pip
 
 # Set default shell
 SHELL ["/bin/bash", "-c"]
