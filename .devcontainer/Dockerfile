@@ -43,11 +43,12 @@ RUN install -m 0755 -d /etc/apt/keyrings && \
     apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /workspace/supreme-ansible
+
 # Create virtual environment and install requirements
-COPY requirements.txt /tmp/requirements.txt
 RUN python3 -m venv /workspace/.venv && \
     /workspace/.venv/bin/pip install --upgrade pip && \
-    /workspace/.venv/bin/pip install -r /tmp/requirements.txt
+    /workspace/.venv/bin/pip install -r requirements.txt
 
 # Set default shell
 SHELL ["/bin/bash", "-c"]
