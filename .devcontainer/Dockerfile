@@ -18,7 +18,6 @@ ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
 
-
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     ca-certificates \
@@ -30,8 +29,12 @@ RUN apt-get update && apt-get install -y \
     openssh-client \
     python3 \
     python3-pip \
-    python3-venv && \
-    install -m 0755 -d /etc/apt/keyrings && \
+    python3-venv \
+    docker \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Docker from official Docker repository
+RUN install -m 0755 -d /etc/apt/keyrings && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | tee /etc/apt/keyrings/docker.asc > /dev/null && \
     chmod a+r /etc/apt/keyrings/docker.asc && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
