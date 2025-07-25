@@ -1,0 +1,19 @@
+---
+# Reference documentation: https://learn.srlinux.dev/ansible/collection/
+- name: Nokia Device Configuration and Backup
+  hosts:
+    - nokia
+  gather_facts: true
+  tasks:
+
+    - name: Backup running configuration
+      nokia.srlinux.get:
+        paths:
+          - path: /
+            datastore: running
+      register: get_result
+
+    - name: Save fetched configs
+      ansible.builtin.copy:
+        content: "{{ get_result.result[0] | to_nice_json }}"
+        dest: "{{ playbook_dir }}/{{ inventory_hostname }}.cfg.json"
