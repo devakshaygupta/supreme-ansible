@@ -17,4 +17,4 @@ jobs:
           args: "-c .ansible-lint.yml -v"
           setup_python: "true"
           working_directory: ""
-          requirements_file: "collections/requirements.yml"
+          requirements_file: "playbooks/collections/requirements.yml"
