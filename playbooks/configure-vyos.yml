@@ -9,7 +9,7 @@
         backup: true
         backup_options:
           filename: "{{ inventory_hostname }}.cfg"
-          dir_path: "{{ playbook_dir}}/backup"
+          dir_path: "{{ playbook_dir }}/backup"
 
     - name: Set post-login banner on VyOS device
       vyos.vyos.vyos_banner:

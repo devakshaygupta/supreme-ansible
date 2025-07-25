@@ -50,8 +50,7 @@ class TestIp4(TestCase):
         args = ["", AnsibleUndefined(name="my_ip"), ""]
         with pytest.raises(
             AnsibleFilterError,
-            # Note: this class has been moved to native_helpers dir since 2.16, hence adding regex to be backwards compatable with 2.15
-            match=r"Unrecognized type <<class 'ansible\.template\.(native_helpers\.)?AnsibleUndefined'>> for ipv4 filter <value>",
+            match="Unrecognized type <<class 'ansible.template.AnsibleUndefined'>> for ipv4 filter <value>",
         ):
             _ipv4(*args)
 

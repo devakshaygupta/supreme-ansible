@@ -51,7 +51,6 @@ DOCUMENTATION = """
     description:
         - This filter is designed to return the input value if a query is True, and False if a query is False
         - This way it can be easily used in chained filters
-        - For more details on how to use this plugin, please refer to `<docsite/rst/filters_ipaddr.rst>`_
     options:
         value:
             description:
@@ -76,8 +75,6 @@ DOCUMENTATION = """
             type: str
             description: type of filter. example ipaddr, ipv4, ipv6, ipwrap
     notes:
-    requirements:
-        - netaddr>=0.10.1
 """
 
 EXAMPLES = r"""

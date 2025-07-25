@@ -7,6 +7,8 @@ services:
     privileged: true
     volumes:
       - vyos-volume:/lib/modules:z
+    networks:
+      - vyos-network
     command: /sbin/init
 
   vyos2:
@@ -15,6 +17,8 @@ services:
     privileged: true
     volumes:
       - vyos-volume:/lib/modules:z
+    networks:
+      - vyos-network
     command: /sbin/init
 
   vyos3:
@@ -23,7 +27,13 @@ services:
     privileged: true
     volumes:
       - vyos-volume:/lib/modules:z
+    networks:
+      - vyos-network
     command: /sbin/init
+
+  nokia1:
+    image: ghcr.io/nokia/srlinux
+    container_name: nokia1
 
 networks:
   vyos-network: {}

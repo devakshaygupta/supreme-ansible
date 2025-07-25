@@ -490,8 +490,10 @@ class Connection(NetworkConnectionBase):
         return self._matched_prompt
 
     def exec_command(self, cmd, in_data=None, sudoable=True):
-        # not accessible code alert can be taken out at around  01-01-2027,
-        # when connection local is removed
+        # this try..except block is just to handle the transition to supporting
+        # network_cli as a toplevel connection.  Once connection=local is gone,
+        # this block can be removed as well and all calls passed directly to
+        # the local connection
         if self._ssh_shell:
             try:
                 cmd = json.loads(to_text(cmd, errors="surrogate_or_strict"))

@@ -2,4 +2,3 @@
 ansible_network_os: nokia.srlinux.srlinux
 ansible_connection: ansible.netcommon.httpapi
 ansible_user: admin
-

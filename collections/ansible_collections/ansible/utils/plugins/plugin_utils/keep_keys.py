@@ -35,14 +35,13 @@ def keep_keys_from_dict_n_list(data, target, matching_parameter):
     if isinstance(data, dict):
         keep = {}
         for k, val in data.items():
-            match = False
             for key in target:
-                if k == key:
-                    keep[k], match = val, True
-                elif not isinstance(val, (list, dict)):
+                match = None
+                if not isinstance(val, (list, dict)):
                     if matching_parameter == "regex":
-                        if re.match(key, k):
-                            keep[k], match = val, True
+                        match = re.match(key, k)
+                        if match:
+                            keep[k] = val
                     elif matching_parameter == "starts_with":
                         if k.startswith(key):
                             keep[k], match = val, True
@@ -54,14 +53,13 @@ def keep_keys_from_dict_n_list(data, target, matching_parameter):
                             keep[k], match = val, True
                 else:
                     list_data = keep_keys_from_dict_n_list(val, target, matching_parameter)
-                    if isinstance(list_data, list):
+                    if isinstance(list_data, list) and not match:
                         list_data = [r for r in list_data if r not in ([], {})]
-                    if list_data not in ([], {}):
-                        keep[k], match = list_data, True
-            if not match and isinstance(val, (list, dict)):
-                nested_keep = keep_keys_from_dict_n_list(val, target, matching_parameter)
-                if nested_keep not in ([], {}):
-                    keep[k] = nested_keep
+                        if all(isinstance(s, str) for s in list_data):
+                            continue
+                    if list_data in ([], {}):
+                        continue
+                    keep[k] = list_data
         return keep
     return data
 

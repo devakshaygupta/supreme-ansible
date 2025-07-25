@@ -1,8 +1,8 @@
 ---
 collections:
-  - name: vyos.vyos
-    version: 6.0.0
   - name: ansible.netcommon
-    version: 8.0.1
+    version: 6.1.3
   - name: nokia.srlinux
     version: 1.0.3
+  - name: vyos.vyos
+    version: 6.0.0

@@ -111,4 +111,3 @@ venv.bak/
 
 # vs code configuration
 .vscode/
-.ansible/

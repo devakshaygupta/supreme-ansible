@@ -145,7 +145,7 @@ class TestPyatsParser(TestCase):
         error = {
             "errors": [
                 "The pyats library return an error for 'show inventory' for 'wrong_os'. "
-                "Error: Parser Output is empty."
+                "Error: Could not find parser for show inventory under ('wrong_os',)."
             ]
         }
         self.assertEqual(result, error)

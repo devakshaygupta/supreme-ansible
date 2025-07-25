@@ -22,7 +22,6 @@ description:
   - The network filters also support parsing the output of a CLI command using the TextFSM library.
     To parse the CLI output with TextFSM use this filter.
   - Using the parameters below - C(data | ansible.netcommon.parse_cli_textfsm(template.yml))
-  - This plugin is deprecated and will be removed in a future release after 2027-02-01, please Use ansible.utils.cli_parse instead.
 notes:
   - Use of the TextFSM filter requires the TextFSM library to be installed.
 options:
@@ -99,17 +98,11 @@ try:
 except ImportError:
     from jinja2.filters import environmentfilter as pass_environment
 
-from ansible.utils.display import Display
-
 
 @pass_environment
 def _parse_cli_textfsm(*args, **kwargs):
-    """parse textfsm"""
-    display = Display()
-    display.warning(
-        "The 'parse_cli_textfsm' filter is deprecated and will be removed in a future release "
-        "after 2027-02-01. Use 'ansible.utils.cli_parse' instead."
-    )
+    """Extend vlan data"""
+
     keys = ["value", "template"]
     data = dict(zip(keys, args[1:]))
     data.update(kwargs)

@@ -146,4 +146,4 @@ Status
 Authors
 ~~~~~~~
 
-- Katherine Case (@Qalthos)
+- Kate Case (@Qalthos)

@@ -19,12 +19,10 @@
 
 - name: Integration tests with and without default engine as xmltodict and
   ansible.builtin.assert:
-    that: "{{ output == test_item.test }}"
+    that: "{{ output == item.test }}"
   loop:
     - test: "{{ data | ansible.utils.from_xml() }}"
     - test: "{{ data | ansible.utils.from_xml('xmltodict') }}"
-  loop_control:
-    loop_var: test_item
 
 - name: Setup invalid xml as input to ansible.utils.from_xml.
   ansible.builtin.set_fact:
