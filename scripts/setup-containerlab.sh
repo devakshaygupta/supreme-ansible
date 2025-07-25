@@ -12,4 +12,4 @@ sudo dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 
 systemctl enable --now docker
 
-
+bash -c "$(curl -sL https://get.containerlab.dev)"

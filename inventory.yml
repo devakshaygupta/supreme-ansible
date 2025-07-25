@@ -6,3 +6,7 @@ all:
         vyos1.lab.example.com:
         vyos2.lab.example.com:
         vyos3.lab.example.com:
+    nokia:
+      hosts:
+        nokia1.lab.example.com:
+        nokia2.lab.example.com:

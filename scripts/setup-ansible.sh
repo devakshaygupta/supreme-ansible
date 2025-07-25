@@ -30,4 +30,3 @@ location="registry.redhat.io"
 blocked=false
 EOF
 
-ssh-keygen -f ~/.ssh/ansible -t ed25519
