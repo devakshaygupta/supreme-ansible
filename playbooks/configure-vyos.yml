@@ -4,6 +4,7 @@
     - vyos
   gather_facts: true
   tasks:
+
     - name: Backup VyOS device configuration to local backup directory
       vyos.vyos.vyos_config:
         backup: true

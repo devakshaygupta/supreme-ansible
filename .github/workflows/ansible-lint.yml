@@ -4,7 +4,7 @@ on:
     types: [opened, synchronize, closed]
   push:
   workflow_dispatch:
-    
+
 jobs:
   build:
     name: Ansible Lint # Naming the build is important to use it as a status check
