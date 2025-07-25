@@ -31,10 +31,6 @@ services:
       - vyos-network
     command: /sbin/init
 
-  nokia1:
-    image: ghcr.io/nokia/srlinux
-    container_name: nokia1
-
 networks:
   vyos-network: {}
 
